@@ -2,7 +2,7 @@
 
 > ##### Домашнее задание курса **[JavaScript Developer. Basic](https://otus.ru/lessons/javascript-basic/?int_source=courses_catalog&int_term=programming)**
 >
-> ![GHP](https://github.com/lliriq77/otus--weather-forecast/actions/workflows/gh-pages.yml/badge.svg)![PR Sanity Check](https://github.com/lliriq77/otus--weather-forecast/actions/workflows/sanity-check.yml/badge.svg)
+> ![GHP](https://github.com/lliriq77/otus--blog/actions/workflows/gh-pages.yml/badge.svg)![PR Sanity Check](https://github.com/lliriq77/otus--blog/actions/workflows/sanity-check.yml/badge.svg)
 
 1. создать новый репозиторий
 2. настроить в нем линтеры, github actions
