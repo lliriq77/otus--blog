@@ -4,6 +4,7 @@ const { resolve } = require("path");
 const { NODE_ENV } = process.env;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const HandlebarsWebpackPlugin = require("handlebars-webpack-plugin");
 
 module.exports = {
   entry: resolve(__dirname, "./src/index.js"),
@@ -53,8 +54,30 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolve(__dirname, "index.html"),
     }),
+
+    new HandlebarsWebpackPlugin({
+      htmlWebpackPlugin: {
+        enabled: true, // register all partials from html-webpack-plugin, defaults to `false`
+        prefix: "html", // where to look for htmlWebpackPlugin output. default is "html"
+        HtmlWebpackPlugin, // optionally: pass in HtmlWebpackPlugin if it cannot be resolved
+      },
+
+      entry: path.join(process.cwd(), "src", "hbs", "*.hbs"),
+      output: path.join(process.cwd(), "dist", "[name].html"),
+
+      partials: [
+        path.join(
+          process.cwd(),
+          "html",
+          /* <-- this should match htmlWebpackPlugin.prefix */ "*",
+          "*.hbs"
+        ),
+        path.join(process.cwd(), "src", "hbs", "*", "*.hbs"),
+      ],
+    }),
     new MiniCssExtractPlugin(),
   ],
+
   devServer: {
     client: {
       logging: "info",
