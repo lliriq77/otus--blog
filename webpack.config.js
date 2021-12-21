@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HandlebarsWebpackPlugin = require("handlebars-webpack-plugin");
 const path = require("path");
+const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 
 module.exports = {
   entry: resolve(__dirname, "./src/index.js"),
@@ -76,7 +77,26 @@ module.exports = {
         path.join(process.cwd(), "src", "hbs", "*", "*.hbs"),
       ],
     }),
+
     new MiniCssExtractPlugin(),
+
+    new BrowserSyncPlugin(
+      {
+        // browse to http://localhost:3000/ during development
+        host: "localhost",
+        port: 3000,
+        // proxy the Webpack Dev Server endpoint
+        // (which should be serving on http://localhost:3100/)
+        // through BrowserSync
+        proxy: "http://localhost:9000/",
+      },
+      // plugin options
+      {
+        // prevent BrowserSync from reloading the page
+        // and let Webpack Dev Server take care of this
+        reload: false,
+      }
+    ),
   ],
 
   devServer: {
