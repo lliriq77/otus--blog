@@ -5,6 +5,7 @@ const { NODE_ENV } = process.env;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HandlebarsWebpackPlugin = require("handlebars-webpack-plugin");
+const path = require("path");
 
 module.exports = {
   entry: resolve(__dirname, "./src/index.js"),

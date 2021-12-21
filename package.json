@@ -23,7 +23,8 @@
   "keywords": [],
   "homepage": "https://github.com/lliriq77/otus--weather-forecast#readme",
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "sanitize.css": "^13.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
