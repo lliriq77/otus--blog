@@ -6,8 +6,8 @@
   "scripts": {
     "build": "webpack build --node-env production",
     "test": "jest",
-    "lint": "eslint . & prettier --check .",
-    "lint:fix": "eslint . --fix & prettier --write .",
+    "lint": "eslint . & prettier --check . && stylelint \"**/*.css\"",
+    "lint:fix": "eslint . --fix & prettier --write . && stylelint \"**/*.css\" --fix",
     "prepare": "husky install",
     "dev": "webpack serve --open"
   },
@@ -54,12 +54,18 @@
     "mini-css-extract-plugin": "^2.4.5",
     "prettier": "^2.5.0",
     "style-loader": "^3.3.1",
+    "stylelint": "^14.2.0",
+    "stylelint-config-standard": "^24.0.0",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.6.0"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md,yml,html}": "prettier --write"
+    "*.js": [
+      "prettier --write",
+      "eslint --cache --fix"
+    ],
+    "*.{js,css,md,yml,html}": "prettier --write",
+    "*.css": "stylelint --fix"
   }
 }

@@ -35,11 +35,11 @@
 html {
   cursor: default; /* 1 */
   line-height: 1.5; /* 2 */
-  -moz-tab-size: 4; /* 3 */
+  tab-size: 4; /* 3 */
   tab-size: 4; /* 3 */
   -webkit-tap-highlight-color: transparent /* 4 */;
-  -ms-text-size-adjust: 100%; /* 5 */
-  -webkit-text-size-adjust: 100%; /* 5 */
+  text-size-adjust: 100%; /* 5 */
+  text-size-adjust: 100%; /* 5 */
   word-break: break-word; /* 6 */
 }
 
@@ -285,7 +285,7 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button;
+  appearance: button;
 }
 
 /**
@@ -363,7 +363,7 @@ textarea {
  */
 
 [type="search"] {
-  -webkit-appearance: textfield; /* 1 */
+  appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
 
@@ -380,7 +380,7 @@ textarea {
  * Correct the text style of placeholders in Chrome, Edge, and Safari.
  */
 
-::-webkit-input-placeholder {
+::input-placeholder {
   color: inherit;
   opacity: 0.54;
 }
@@ -390,7 +390,7 @@ textarea {
  */
 
 ::-webkit-search-decoration {
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 /**
@@ -399,7 +399,7 @@ textarea {
  */
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
+  appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
 
@@ -448,16 +448,16 @@ dialog {
   border: solid;
   color: black;
   display: block;
-  height: -moz-fit-content;
-  height: -webkit-fit-content;
+  height: fit-content;
+  height: fit-content;
   height: fit-content;
   left: 0;
   margin: auto;
   padding: 1em;
   position: absolute;
   right: 0;
-  width: -moz-fit-content;
-  width: -webkit-fit-content;
+  width: fit-content;
+  width: fit-content;
   width: fit-content;
 }
 
@@ -510,7 +510,7 @@ select,
 summary,
 textarea,
 [tabindex] {
-  -ms-touch-action: manipulation; /* 1 */
+  touch-action: manipulation; /* 1 */
   touch-action: manipulation; /* 2 */
 }
 
