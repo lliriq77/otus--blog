@@ -4,9 +4,10 @@ const { resolve } = require("path");
 const { NODE_ENV } = process.env;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const HandlebarsWebpackPlugin = require("handlebars-webpack-plugin");
-const path = require("path");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+const glob = require("glob");
+
+const pages = glob.sync("pages/*.html");
 
 module.exports = {
   entry: resolve(__dirname, "./src/index.js"),
@@ -36,6 +37,15 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
       },
       {
+        test: /\.(s(a|c)ss)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader",
+          "postcss-loader",
+        ],
+      },
+      {
         test: /\.(jpeg)$/i,
         type: "asset/resource",
         generator: {
@@ -53,30 +63,13 @@ module.exports = {
   },
   mode: NODE_ENV === "production" ? "production" : "development",
   plugins: [
-    new HtmlWebpackPlugin({
-      template: resolve(__dirname, "index.html"),
-    }),
-
-    new HandlebarsWebpackPlugin({
-      htmlWebpackPlugin: {
-        enabled: true, // register all partials from html-webpack-plugin, defaults to `false`
-        prefix: "html", // where to look for htmlWebpackPlugin output. default is "html"
-        HtmlWebpackPlugin, // optionally: pass in HtmlWebpackPlugin if it cannot be resolved
-      },
-
-      entry: path.join(process.cwd(), "src", "hbs", "*.hbs"),
-      output: path.join(process.cwd(), "dist", "[name].html"),
-
-      partials: [
-        path.join(
-          process.cwd(),
-          "html",
-          /* <-- this should match htmlWebpackPlugin.prefix */ "*",
-          "*.hbs"
-        ),
-        path.join(process.cwd(), "src", "hbs", "*", "*.hbs"),
-      ],
-    }),
+    ...pages.map(
+      (el) =>
+        new HtmlWebpackPlugin({
+          filename: el.replace(/^pages\//, ""),
+          template: el,
+        })
+    ),
 
     new MiniCssExtractPlugin(),
 
