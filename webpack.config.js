@@ -10,7 +10,10 @@ const glob = require("glob");
 const pages = glob.sync("pages/*.html");
 
 module.exports = {
-  entry: resolve(__dirname, "./src/index.js"),
+  entry: {
+    index: resolve(__dirname, "./src/index.js"),
+  },
+
   output: {
     filename: "bundle.js",
     path: resolve(`${__dirname}/dist`),
@@ -74,6 +77,8 @@ module.exports = {
         new HtmlWebpackPlugin({
           filename: el.replace(/^pages\//, ""),
           template: el,
+          inject: true,
+          chunks: ["index"],
         })
     ),
 
