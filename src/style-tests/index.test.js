@@ -33,7 +33,7 @@ describe("styles.test", () => {
       expect(image).toMatchImageSnapshot(
         process.env.CI
           ? {
-              failureThreshold: 0.01,
+              failureThreshold: 0.02,
               failureThresholdType: "percent",
             }
           : undefined
@@ -63,7 +63,7 @@ describe("styles.test", () => {
       expect(image).toMatchImageSnapshot(
         process.env.CI
           ? {
-              failureThreshold: 0.01,
+              failureThreshold: 0.02,
               failureThresholdType: "percent",
             }
           : undefined
@@ -93,7 +93,7 @@ describe("styles.test", () => {
       expect(image).toMatchImageSnapshot(
         process.env.CI
           ? {
-              failureThreshold: 0.01,
+              failureThreshold: 0.02,
               failureThresholdType: "percent",
             }
           : undefined
