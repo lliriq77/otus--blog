@@ -46,14 +46,20 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpeg)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
         generator: {
           filename: "./image/[contenthash][ext]",
         },
       },
       {
-        test: /\.html$/i,
+        // https://webpack.js.org/guides/asset-modules/#replacing-inline-loader-syntax
+        resourceQuery: /raw/,
+        type: "asset/source",
+      },
+      {
+        // https://webpack.js.org/loaders/html-loader/#usage
+        resourceQuery: /template/,
         loader: "html-loader",
       },
     ],

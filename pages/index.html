@@ -8,7 +8,10 @@
   </head>
 
   <body>
-    <div></div>
-    <script src="../pages/index.html"></script>
+    <%= require('!html-loader!./partials/header.html').default %>
+    <main class="main container-style">
+      <h1 class="main__header">Lorem ipsum</h1>
+    </main>
+    <%= require('!html-loader!./partials/footer.html').default %>
   </body>
 </html>

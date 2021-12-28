@@ -7,5 +7,27 @@
     <title>Feedback</title>
   </head>
 
-  <body></body>
+  <body>
+    <%= require('!html-loader!./partials/header.html').default %>
+    <main class="main container-style">
+      <section class="form column">
+        <div class="string container-style space-between">
+          <span class="string__content"> Name:</span
+          ><input class="input btn-style" />
+        </div>
+        <div class="string container-style space-between">
+          <span class="string__content"> E-mail:</span
+          ><input class="input btn-style" />
+        </div>
+        <div class="string container-style space-between">
+          <span class="string__content">Message:</span
+          ><input class="input btn-style" />
+        </div>
+        <div class="string container-style">
+          <button class="string__button btn-style">Send msg</button>
+        </div>
+      </section>
+    </main>
+    <%= require('!html-loader!./partials/footer.html').default %>
+  </body>
 </html>
