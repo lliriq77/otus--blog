@@ -23,6 +23,7 @@
   "keywords": [],
   "homepage": "https://github.com/lliriq77/otus--weather-forecast#readme",
   "dependencies": {
+    "core-js": "^3.20.1",
     "glob": "^7.2.0",
     "lodash": "^4.17.21",
     "sanitize.css": "^13.0.0"
