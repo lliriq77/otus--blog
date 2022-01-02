@@ -11,7 +11,19 @@
     <div class="wrapper">
       <%= require('!html-loader!./partials/header.html').default %>
       <main class="main container-style zeromargin">
-        <h1 class="main__header">Lorem ipsum</h1>
+        <div class="carousel">
+          <div class="carousel__slide">
+            <img src="<%= require('../src/assets/1media.jpg') %>" />
+          </div>
+          <div class="carousel__slide">
+            <img src="<%= require('../src/assets/2-media.png') %>" />
+          </div>
+          <div class="carousel__slide">
+            <img src="<%= require('../src/assets/3-media.png') %>" />
+          </div>
+          <a class="prev">&#10094;</a>
+          <a class="next">&#10095;</a>
+        </div>
       </main>
       <%= require('!html-loader!./partials/footer.html').default %>
     </div>
