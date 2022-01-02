@@ -1,3 +1,5 @@
+import "./css/index.css";
+
 let slideIndex = 1;
 const prevButton = document.querySelector(".prev");
 const nextButton = document.querySelector(".next");
