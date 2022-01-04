@@ -6,6 +6,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 
+const glob = require("glob");
+
+const pages = glob.sync("pages/*.html");
+
 module.exports = {
   entry: {
     index: resolve(__dirname, "./src/index.js"),
@@ -70,30 +74,15 @@ module.exports = {
   },
   mode: NODE_ENV === "production" ? "production" : "development",
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "./pages/index.html",
-      inject: true,
-      chunks: ["carousel"],
-    }),
-    new HtmlWebpackPlugin({
-      filename: "feedback.html",
-      template: "./pages/feedback.html",
-      inject: true,
-      chunks: ["index"],
-    }),
-    new HtmlWebpackPlugin({
-      filename: "blog.html",
-      template: "./pages/blog.html",
-      inject: true,
-      chunks: ["index"],
-    }),
-    new HtmlWebpackPlugin({
-      filename: "blog-01.html",
-      template: "./pages/blog-01.html",
-      inject: true,
-      chunks: ["index"],
-    }),
+    ...pages.map(
+      (el) =>
+        new HtmlWebpackPlugin({
+          filename: el.replace(/^pages\//, ""),
+          template: el,
+          inject: true,
+          chunks: el.includes("index") ? ["carousel"] : ["index"],
+        })
+    ),
 
     new MiniCssExtractPlugin(),
 
